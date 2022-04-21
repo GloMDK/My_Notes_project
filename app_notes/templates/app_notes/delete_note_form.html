@@ -1,0 +1,13 @@
+{% extends "app_notes/base.html" %}
+{% block content %}
+<div class="container">
+<h2>Delete Note</h2>
+<form method="post">
+   <div>
+      {% csrf_token %} {{ form.as_p }}
+      <p>Are you sure you want to delete "{{ object }}"?</p>
+      <input type="submit" value="Confirm" />
+   </div>
+</form>
+</div>
+{% endblock %}

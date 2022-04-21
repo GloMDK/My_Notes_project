@@ -1,0 +1,23 @@
+{% extends "app_notes/base.html" %}
+
+{% block content %}
+<div class="container">
+<h1 style="font-size: xx-large">My Notes</h1>
+<a href="{% url 'add_note' %}"><button class="btn btn-primary" type = "submit" style="margin-bottom: 10px">Add a new note</button></a>
+   {% for note in notes %}
+   <div class="list-group" style="padding-bottom: 10px">
+      <a href="{% url 'upd_note' note.id %}" class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: rgba(255, 226, 117, .6)">
+         <div class="d-flex w-100 justify-content-between ">
+            <h4 class="mb-1">{{ note.title }}</h4>
+         </div>
+         {% if note.text %}
+         <p class="mb-1">{{ note.text}}</p>
+         {% endif %}
+         {% if note.image %}
+         <img src="{{ note.image.url }}" height="100%" width="100%">
+         {% endif %}
+      </a>
+   </div>
+   {% endfor %}
+{% endblock %}
+</div>

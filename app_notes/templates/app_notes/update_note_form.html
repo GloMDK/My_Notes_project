@@ -1,0 +1,13 @@
+{% extends "app_notes/base.html" %}
+{% block content %}
+<div class="container">
+<h2>Update note</h2>
+<form method="post" enctype="multipart/form-data">
+   <div class="form-group">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" value="Save Changes" class="btn btn-primary">Submit</button>
+   </div>
+</form>
+<a href="{% url 'del_note' notes.id %}"><button class="btn btn-danger" >Delete</button></a>
+</div>
+{% endblock %}
